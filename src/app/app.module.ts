@@ -6,18 +6,22 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
-import { ProfileComponent } from './components/pages/profile/profile.component';
-import { InvoiceComponent } from './components/pages/invoice/invoice.component';
 import { ProductsComponent } from './components/products/products.component';
-import { WhishlistComponent } from './components/pages/whishlist/whishlist.component';
-import { CartlistComponent } from './components/pages/cartlist/cartlist.component';
 import { ViewComponent } from './components/products/view/view.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
-import { SummaryComponent } from './components/pages/summary/summary.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { DataService } from './services/data.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { WhishlistComponent } from './components/whishlist/whishlist.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -25,24 +29,32 @@ import { SummaryComponent } from './components/pages/summary/summary.component';
     LoginComponent,
     RegisterComponent,
     ChangePasswordComponent,
-    ProfileComponent,
-    InvoiceComponent,
     ProductsComponent,
-    WhishlistComponent,
-    CartlistComponent,
     ViewComponent,
     HeaderComponent,
     FooterComponent,
     NavbarComponent,
     NotFoundComponent,
     HomeComponent,
-    SummaryComponent
+    UserProfileComponent,
+    ShoppingCartComponent,
+    WhishlistComponent,
+    CheckoutComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 2000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      countDuplicates: true
+    }),
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

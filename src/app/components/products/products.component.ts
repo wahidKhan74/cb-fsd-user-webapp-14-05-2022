@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-products',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  fetching: boolean = false;
+  products: any[] = [];
+  cartProducts: any[] = [];
+  whishlistProducts: any[] = [];
+
+  constructor( public db: DataService) { }
 
   ngOnInit(): void {
+    this.db.getProducts();
+    this.db.productsSub.subscribe(res => {
+      if(res.length !== 0) {
+        this.products = Object.assign([], res);
+        this.fetching = false;
+        console.log(this.products);        
+      }
+    })
+    
   }
 
 }

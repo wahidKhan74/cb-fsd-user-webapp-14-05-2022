@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+
+export const menuItems: any[] = [
+  { path: '/products', title: 'Products', icon: '', class: '' },
+  { path: '/shopping-cart', title: 'Shopping-cart', icon: '', class: '' },
+  { path: '/whishlist', title: 'Whishlist', icon: '', class: '' },
+  { path: '/my-orders', title: 'My Orders', icon: '', class: '' },
+  { path: '/profile', title: 'My Profile', icon: '', class: '' },
+];
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,7 +17,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor(public db: DataService) { }
 
   ngOnInit(): void {
   }
